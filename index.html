@@ -55,18 +55,18 @@
             padding: 15px 20px;
             border-radius: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 12px;
             box-shadow: 0 10px 25px var(--shadow-color),
                         inset 0 2px 3px rgba(255,255,255,0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transform: perspective(1000px) rotateX(2deg);
         }
 
-        .header-left {
+        .header-top {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         /* រូបផ្ទះ / Icon ហាង មានចលនាលោត */
@@ -101,13 +101,13 @@
         }
 
         .header-card h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: 1px;
             line-height: 1.2;
         }
 
-        /* ប៊ូតុងប្ដូរ Theme ដាក់ទទឹមខាងក្រោម Sabay Toup */
+        /* ប៊ូតុងប្ដូរ Theme ដាក់នៅខាងក្រោមទទឹម Sabay Toup */
         .theme-toggle-btn-inline {
             background: var(--bg-color);
             border: 1px solid rgba(139, 92, 246, 0.4);
@@ -130,12 +130,13 @@
             color: #ffffff;
         }
 
-        /* User Profile Info on Header */
+        /* User Profile Info on Header (រៀបចំនៅខាងក្រោម) */
         .user-profile-display {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 8px;
+            border-top: 1px solid rgba(128, 128, 128, 0.2);
         }
 
         .username-tag {
@@ -143,23 +144,23 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
         /* Blue Tick Verified Badge */
         .blue-tick {
             color: #3b82f6;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         .logout-btn-sm {
             background: #ef4444;
             color: white;
             border: none;
-            padding: 2px 6px;
-            font-size: 0.7rem;
+            padding: 4px 10px;
+            font-size: 0.75rem;
             font-weight: 600;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(239, 68, 68, 0.4);
         }
@@ -472,7 +473,7 @@
     <div class="container">
         <!-- Header: SABAY TOUP -->
         <div class="header-card">
-            <div class="header-left">
+            <div class="header-top">
                 <!-- រូបផ្ទះ / Icon ហាង មានចលនាលោត -->
                 <div class="store-icon" id="storeModalBtn">
                     <i class="fa-solid fa-store"></i>
@@ -487,10 +488,10 @@
                 </div>
             </div>
 
-            <!-- បង្ហាញឈ្មោះគណនីពេល Login រួច -->
+            <!-- បង្ហាញឈ្មោះគណនីពេល Login រួច (នៅខាងក្រោម មានពាក្យ ជម្រាបសួរ!) -->
             <div class="user-profile-display" id="userProfileDisplay" style="display: none;">
                 <div class="username-tag" id="displayUsername">
-                    <span>User</span>
+                    <span>ជម្រាបសួរ! User</span>
                     <i class="fa-solid fa-circle-check blue-tick" title="Verified"></i>
                 </div>
                 <button class="logout-btn-sm" id="logoutBtn">ចាកចេញ</button>
@@ -694,7 +695,7 @@
             const loggedUser = localStorage.getItem('loggedUser');
             if (loggedUser) {
                 userProfileDisplay.style.display = 'flex';
-                displayUsername.innerHTML = `<span>${loggedUser}</span> <i class="fa-solid fa-circle-check blue-tick" title="Verified"></i>`;
+                displayUsername.innerHTML = `<span>ជម្រាបសួរ! ${loggedUser}</span> <i class="fa-solid fa-circle-check blue-tick" title="Verified"></i>`;
                 accountBtnText.innerText = 'គណនីរបស់ខ្ញុំ';
             } else {
                 userProfileDisplay.style.display = 'none';
