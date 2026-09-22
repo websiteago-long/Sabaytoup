@@ -384,15 +384,16 @@
         }
 
         .modal-content {
-            background-color: var(--card-bg);
+            background-color: #1e1e1e;
+            color: #ffffff;
             width: 90%;
-            max-width: 320px;
+            max-width: 340px;
             padding: 20px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 15px 35px var(--shadow-color);
+            gap: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             transform: scale(0.8);
             transition: transform 0.3s ease;
             position: relative;
@@ -403,10 +404,149 @@
             transform: scale(1);
         }
 
-        .modal-title {
-            font-size: 1.1rem;
+        .modal-top-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #ffffff;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Loading View */
+        .loading-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0;
+            gap: 15px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top: 4px solid #e11d48;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-msg {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fca5a5;
+        }
+
+        /* KHQR Card UI Container */
+        .khqr-card-ui {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid #e11d48;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: left;
+            color: #111;
+        }
+
+        .khqr-header {
+            background-color: #e11d48;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .khqr-body {
+            padding: 12px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .khqr-name {
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 2px;
+            color: #555;
+            letter-spacing: 0.5px;
+        }
+
+        .khqr-amount {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111;
+        }
+
+        .khqr-divider {
+            border-top: 1px dashed #ccc;
+            margin: 6px 0;
+        }
+
+        .khqr-qr-container {
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .khqr-qr-img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+        }
+
+        /* Modal Action Buttons (បោះបង់ និង បញ្ជាក់) */
+        .modal-action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            background-color: #4b5563;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background-color: #e11d48;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-cancel:hover, .btn-confirm:hover {
+            opacity: 0.9;
         }
 
         .modal-btn {
@@ -437,95 +577,6 @@
         .btn-telegram {
             background-color: #229ed9;
             color: #ffffff;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        /* KHQR Card UI Container (តាមរូបភាព KHQR របស់អ្នក) */
-        .khqr-card-ui {
-            position: relative;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 2px solid #e11d48;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            text-align: left;
-            color: #111;
-        }
-
-        .khqr-header {
-            background-color: #e11d48;
-            color: #ffffff;
-            padding: 8px 12px;
-            font-weight: 800;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .khqr-body {
-            padding: 12px 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .khqr-name {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #555;
-            letter-spacing: 0.5px;
-        }
-
-        .khqr-amount {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #111;
-        }
-
-        .khqr-divider {
-            border-top: 1px dashed #ccc;
-            margin: 4px 0;
-        }
-
-        .khqr-qr-container {
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #fff;
-        }
-
-        .khqr-qr-img {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-        }
-
-        .loading-text {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #e11d48;
-            margin-top: 5px;
-            animation: pulseText 1s infinite alternate;
-        }
-
-        @keyframes pulseText {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
         }
 
         /* Form Styles */
@@ -729,10 +780,16 @@
             <button class="modal-close" id="closeQrModalBtn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="modal-title" id="qrModalTitle">ស្កេនទូទាត់ប្រាក់</div>
-            
-            <!-- KHQR Card UI -->
-            <div class="khqr-card-ui">
+            <div class="modal-top-title">សេវាទូទាត់ប្រាក់</div>
+
+            <!-- Loading State (បង្ហាញពេលរង់ចាំ ២វិនាទីដំបូង) -->
+            <div class="loading-box" id="qrLoadingBox">
+                <div class="spinner"></div>
+                <div class="loading-msg">កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...</div>
+            </div>
+
+            <!-- KHQR Card UI (លេចចេញមកក្រោយ ២វិនាទី) -->
+            <div class="khqr-card-ui" id="qrCardBox" style="display: none;">
                 <div class="khqr-header">
                     <span>KHQR</span>
                     <i class="fa-solid fa-qrcode"></i>
@@ -742,13 +799,17 @@
                     <div class="khqr-amount" id="qrPriceDisplay">0$</div>
                     <div class="khqr-divider"></div>
                     <div class="khqr-qr-container">
-                        <!-- យោងលើលីង KHQR រូបភាពរបស់អ្នក -->
+                        <!-- រូបភាព KHQR របស់អ្នក -->
                         <img src="https://img.sanishtech.com/u/5a323b9a00d83b33752d2a860209aa5f.png" alt="KHQR Code" class="khqr-qr-img">
                     </div>
                 </div>
             </div>
 
-            <div class="loading-text" id="loadingText">កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...</div>
+            <!-- ប៊ូតុង បោះបង់ និង បញ្ជាក់ -->
+            <div class="modal-action-buttons" id="qrActionButtons" style="display: none;">
+                <button class="btn-cancel" id="cancelBuyBtn">បោះបង់</button>
+                <button class="btn-confirm" id="confirmBuyBtn">បញ្ជាក់</button>
+            </div>
         </div>
     </div>
 
@@ -758,7 +819,7 @@
             <button class="modal-close" id="closeModalBtn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="modal-title">ជ្រើសរើសសេវាកម្ម</div>
+            <div style="font-size: 1.2rem; font-weight: 700; margin-bottom: 5px;">ជ្រើសរើសសេវាកម្ម</div>
             
             <button class="modal-btn btn-account" id="openAccountModalBtn">
                 <i class="fa-solid fa-user-circle"></i>
@@ -781,7 +842,7 @@
             
             <!-- Register Form -->
             <div id="registerFormContainer" class="form-container">
-                <div class="modal-title">បង្កើតគណនីថ្មី</div>
+                <div style="font-size: 1.2rem; font-weight: 700;">បង្កើតគណនីថ្មី</div>
                 <input type="text" id="regUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
                 <input type="password" id="regPassword" class="form-input" placeholder="លេខកូដ (Password)">
                 <div class="form-error" id="regError"></div>
@@ -791,7 +852,7 @@
 
             <!-- Login Form -->
             <div id="loginFormContainer" class="form-container" style="display: none;">
-                <div class="modal-title">ចូលគណនី</div>
+                <div style="font-size: 1.2rem; font-weight: 700;">ចូលគណនី</div>
                 <input type="text" id="loginUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
                 <input type="password" id="loginPassword" class="form-input" placeholder="លេខកូដ (Password)">
                 <div class="form-error" id="loginError"></div>
@@ -845,8 +906,14 @@
         // QR Modal & 2 Seconds Delay Logic
         const qrModal = document.getElementById('qrModal');
         const closeQrModalBtn = document.getElementById('closeQrModalBtn');
+        const cancelBuyBtn = document.getElementById('cancelBuyBtn');
+        const confirmBuyBtn = document.getElementById('confirmBuyBtn');
         const qrPriceDisplay = document.getElementById('qrPriceDisplay');
-        const loadingText = document.getElementById('loadingText');
+        const qrLoadingBox = document.getElementById('qrLoadingBox');
+        const qrCardBox = document.getElementById('qrCardBox');
+        const qrActionButtons = document.getElementById('qrActionButtons');
+
+        let selectedPackageInfo = { name: '', price: '' };
 
         function handleBuyClick(packageName, packagePrice) {
             const loggedUser = localStorage.getItem('loggedUser');
@@ -856,18 +923,35 @@
                 return;
             }
 
-            // បង្ហាញតម្លៃជំនួសលេខ 0 ក្នុង KHQR Card
+            selectedPackageInfo = { name: packageName, price: packagePrice };
             qrPriceDisplay.innerText = packagePrice;
-            loadingText.innerText = 'កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...';
+
+            // បង្ហាញ Loading State ដំបូង
+            qrLoadingBox.style.display = 'flex';
+            qrCardBox.style.display = 'none';
+            qrActionButtons.style.display = 'none';
             qrModal.classList.add('active');
 
-            // រង់ចាំ ២វិនាទី (2000ms) សឹមលោតទៅ Telegram Admin
+            // រង់ចាំ ២វិនាទី (2000ms) សឹមលោតបង្ហាញ KHQR Card និងប៊ូតុង បោះបង់/បញ្ជាក់
             setTimeout(() => {
-                const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] បានទូទាត់ប្រាក់សម្រាប់កញ្ចប់ ${packageName} 💰 តម្លៃ ${packagePrice} ហើយរៀបចំផ្ញើវិក្កយបត្រជូន។`;
-                window.open(`https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`, '_blank');
-                qrModal.classList.remove('active');
+                qrLoadingBox.style.display = 'none';
+                qrCardBox.style.display = 'block';
+                qrActionButtons.style.display = 'flex';
             }, 2000);
         }
+
+        // ពេលចុចប៊ូតុង "បញ្ជាក់" -> លោតទៅ Telegram Admin
+        confirmBuyBtn.addEventListener('click', () => {
+            const loggedUser = localStorage.getItem('loggedUser');
+            const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] បានទូទាត់ប្រាក់សម្រាប់កញ្ចប់ ${selectedPackageInfo.name} 💰 តម្លៃ ${selectedPackageInfo.price} ហើយរៀបចំផ្ញើវិក្កយបត្រជូន។`;
+            window.open(`https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`, '_blank');
+            qrModal.classList.remove('active');
+        });
+
+        // ពេលចុចប៊ូតុង "បោះបង់"
+        cancelBuyBtn.addEventListener('click', () => {
+            qrModal.classList.remove('active');
+        });
 
         closeQrModalBtn.addEventListener('click', () => {
             qrModal.classList.remove('active');
