@@ -87,6 +87,7 @@
             transform: perspective(1000px) rotateX(2deg);
         }
 
+        /* រូបផ្ទះ / Icon ហាង មានចលនាលោតចុះឡើង (Bounce) */
         .store-icon {
             background: #d1d5db;
             color: #111;
@@ -99,11 +100,21 @@
             font-size: 1.5rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             cursor: pointer;
-            transition: transform 0.2s ease;
+            animation: bounceIcon 1.5s infinite ease-in-out;
+        }
+
+        @keyframes bounceIcon {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         .store-icon:hover {
-            transform: scale(1.05);
+            animation-play-state: paused;
+            transform: scale(1.1);
         }
 
         .header-card h1 {
@@ -388,7 +399,7 @@
     <div class="container">
         <!-- Header: SABAY TOUP -->
         <div class="header-card">
-            <!-- រូបផ្ទះ / Icon ហាង ចុចដើម្បីបើក Menu -->
+            <!-- រូបផ្ទះ / Icon ហាង មានចលនាលោត -->
             <div class="store-icon" id="storeModalBtn">
                 <i class="fa-solid fa-store"></i>
             </div>
