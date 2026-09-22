@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABAY TOUP - Roblox TopUp</title>
+    <title>SABAY TOUP - TopUp Store</title>
     <!-- FontAwesome សម្រាប់ Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
@@ -130,7 +130,7 @@
             color: #ffffff;
         }
 
-        /* User Profile Info on Header (រៀបចំនៅខាងក្រោម) */
+        /* User Profile Info on Header */
         .user-profile-display {
             display: flex;
             align-items: center;
@@ -172,6 +172,12 @@
         /* Menu Section */
         .menu-section {
             display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-row {
+            display: flex;
             align-items: flex-start;
             gap: 15px;
         }
@@ -196,8 +202,8 @@
             height: 25px;
         }
 
-        /* Roblox Main Card */
-        .roblox-main-card {
+        /* Game Main Card */
+        .game-main-card {
             flex-grow: 1;
             background-color: var(--card-bg);
             border-radius: 18px;
@@ -211,12 +217,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .roblox-main-card:hover {
+        .game-main-card:hover {
             transform: perspective(1000px) rotateX(0deg) translateY(-3px);
             box-shadow: 0 16px 35px var(--shadow-color);
         }
 
-        .roblox-logo-box {
+        .game-logo-box {
             display: flex;
             align-items: center;
             padding: 15px 20px;
@@ -224,7 +230,6 @@
             background: var(--card-bg);
         }
 
-        /* Logo Roblox ទម្រង់ 3D */
         .roblox-cube {
             width: 40px;
             height: 40px;
@@ -243,6 +248,19 @@
             border-radius: 3px;
             transform: rotate(20deg);
             box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .ff-cube {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(220, 38, 38, 0.4);
         }
 
         .brand-name {
@@ -269,7 +287,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Pricing Packages Container (លាក់ទុកដំបូង) */
         .packages-container {
             max-height: 0;
             overflow: hidden;
@@ -281,16 +298,15 @@
             background-color: var(--card-bg);
         }
 
-        .roblox-main-card.active .packages-container {
-            max-height: 450px;
+        .game-main-card.active .packages-container {
+            max-height: 500px;
             padding: 15px;
         }
 
-        .roblox-main-card.active .sub-badge i {
+        .game-main-card.active .sub-badge i {
             transform: rotate(180deg);
         }
 
-        /* Package Option Card with RGB Lighting */
         .package-card {
             position: relative;
             border-radius: 14px;
@@ -370,16 +386,17 @@
         .modal-content {
             background-color: var(--card-bg);
             width: 90%;
-            max-width: 350px;
-            padding: 25px;
+            max-width: 320px;
+            padding: 20px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             box-shadow: 0 15px 35px var(--shadow-color);
             transform: scale(0.8);
             transition: transform 0.3s ease;
             position: relative;
+            text-align: center;
         }
 
         .modal-overlay.active .modal-content {
@@ -387,10 +404,9 @@
         }
 
         .modal-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .modal-btn {
@@ -425,16 +441,94 @@
 
         .modal-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: none;
             border: none;
             font-size: 1.2rem;
             color: var(--text-color);
             cursor: pointer;
+            z-index: 10;
         }
 
-        /* Sub-Modal for Register/Login Forms */
+        /* KHQR Card UI Container (តាមរូបភាព KHQR របស់អ្នក) */
+        .khqr-card-ui {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid #e11d48;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: left;
+            color: #111;
+        }
+
+        .khqr-header {
+            background-color: #e11d48;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .khqr-body {
+            padding: 12px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .khqr-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #555;
+            letter-spacing: 0.5px;
+        }
+
+        .khqr-amount {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111;
+        }
+
+        .khqr-divider {
+            border-top: 1px dashed #ccc;
+            margin: 4px 0;
+        }
+
+        .khqr-qr-container {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .khqr-qr-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .loading-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e11d48;
+            margin-top: 5px;
+            animation: pulseText 1s infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Form Styles */
         .form-container {
             display: flex;
             flex-direction: column;
@@ -480,7 +574,7 @@
                 </div>
                 <div class="header-title-box">
                     <h1>SABAY TOUP</h1>
-                    <!-- ប៊ូតុងប្ដូរ Theme ដាក់នៅខាងក្រោមទទឹម Sabay Toup -->
+                    <!-- ប៊ូតុងប្ដូរ Theme ទទឹម Sabay Toup -->
                     <button class="theme-toggle-btn-inline" id="themeToggleBtn">
                         <i class="fa-solid fa-moon" id="themeIcon"></i>
                         <span id="themeText">Dark Mode</span>
@@ -488,7 +582,7 @@
                 </div>
             </div>
 
-            <!-- បង្ហាញឈ្មោះគណនីពេល Login រួច (នៅខាងក្រោម មានពាក្យ ជម្រាបសួរ!) -->
+            <!-- បង្ហាញឈ្មោះគណនីពេល Login រួច -->
             <div class="user-profile-display" id="userProfileDisplay" style="display: none;">
                 <div class="username-tag" id="displayUsername">
                     <span>ជម្រាបសួរ! User</span>
@@ -498,79 +592,163 @@
             </div>
         </div>
 
-        <!-- Section: Roblox TopUp (ចុចដើម្បីបង្ហាញកញ្ចប់តម្លៃ) -->
+        <!-- Menu Section (Roblox & Free Fire) -->
         <div class="menu-section">
-            <div class="sidebar-indicators">
-                <span class="indicator-bar active"></span>
-                <span class="indicator-bar"></span>
-                <span class="indicator-bar"></span>
-            </div>
+            
+            <!-- 1. Roblox Game Card -->
+            <div class="game-row">
+                <div class="sidebar-indicators">
+                    <span class="indicator-bar active"></span>
+                    <span class="indicator-bar"></span>
+                </div>
 
-            <div class="roblox-main-card" id="robloxCard">
-                <div class="roblox-logo-box">
-                    <div class="roblox-cube">
-                        <div class="inner-cube"></div>
+                <div class="game-main-card" id="robloxCard">
+                    <div class="game-logo-box">
+                        <div class="roblox-cube">
+                            <div class="inner-cube"></div>
+                        </div>
+                        <span class="brand-name">Roblox</span>
                     </div>
-                    <span class="brand-name">Roblox</span>
-                </div>
-                <div class="sub-badge">
-                    <span>TopUp Packages</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
+                    <div class="sub-badge">
+                        <span>TopUp Packages</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
 
-                <!-- តារាងតម្លៃដែលលាក់ទុក (ចុចទៅ Telegram Admin ស្វ័យប្រវត្តិ) -->
-                <div class="packages-container">
-                    
-                    <!-- Option 1: 40 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%2040%20Robux%20💰%20តម្លៃ%200.59$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '40 Robux', '0.59$')">
-                        <div class="rgb-glow"></div>
-                        <div class="package-content">
-                            <div class="pkg-info">
-                                <i class="fa-solid fa-coins"></i>
-                                <span>40 Robux</span>
+                    <div class="packages-container">
+                        <!-- 40 Robux -->
+                        <div class="package-card" onclick="handleBuyClick('Roblox 40 Robux', '0.59$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-coins"></i>
+                                    <span>40 Robux</span>
+                                </div>
+                                <div class="pkg-price">0.59$</div>
                             </div>
-                            <div class="pkg-price">0.59$</div>
                         </div>
-                    </a>
-
-                    <!-- Option 2: 80 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%2080%20Robux%20💰%20តម្លៃ%201.10$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '80 Robux', '1.10$')">
-                        <div class="rgb-glow"></div>
-                        <div class="package-content">
-                            <div class="pkg-info">
-                                <i class="fa-solid fa-coins"></i>
-                                <span>80 Robux</span>
+                        <!-- 80 Robux -->
+                        <div class="package-card" onclick="handleBuyClick('Roblox 80 Robux', '1.10$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-coins"></i>
+                                    <span>80 Robux</span>
+                                </div>
+                                <div class="pkg-price">1.10$</div>
                             </div>
-                            <div class="pkg-price">1.10$</div>
                         </div>
-                    </a>
-
-                    <!-- Option 3: 160 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%20160%20Robux%20💰%20តម្លៃ%202.20$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '160 Robux', '2.20$')">
-                        <div class="rgb-glow"></div>
-                        <div class="package-content">
-                            <div class="pkg-info">
-                                <i class="fa-solid fa-coins"></i>
-                                <span>160 Robux</span>
+                        <!-- 160 Robux -->
+                        <div class="package-card" onclick="handleBuyClick('Roblox 160 Robux', '2.20$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-coins"></i>
+                                    <span>160 Robux</span>
+                                </div>
+                                <div class="pkg-price">2.20$</div>
                             </div>
-                            <div class="pkg-price">2.20$</div>
                         </div>
-                    </a>
-
-                    <!-- Option 4: 240 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%20240%20Robux%20💰%20តម្លៃ%203.30$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '240 Robux', '3.30$')">
-                        <div class="rgb-glow"></div>
-                        <div class="package-content">
-                            <div class="pkg-info">
-                                <i class="fa-solid fa-coins"></i>
-                                <span>240 Robux</span>
+                        <!-- 240 Robux -->
+                        <div class="package-card" onclick="handleBuyClick('Roblox 240 Robux', '3.30$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-coins"></i>
+                                    <span>240 Robux</span>
+                                </div>
+                                <div class="pkg-price">3.30$</div>
                             </div>
-                            <div class="pkg-price">3.30$</div>
                         </div>
-                    </a>
-
+                    </div>
                 </div>
             </div>
+
+            <!-- 2. Free Fire Game Card -->
+            <div class="game-row">
+                <div class="sidebar-indicators">
+                    <span class="indicator-bar" style="background-color: #f97316;"></span>
+                    <span class="indicator-bar" style="background-color: #f97316;"></span>
+                </div>
+
+                <div class="game-main-card" id="ffCard">
+                    <div class="game-logo-box">
+                        <div class="ff-cube">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <span class="brand-name">Free Fire</span>
+                    </div>
+                    <div class="sub-badge" style="background-color: #c2410c;">
+                        <span>Diamond Packages</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <div class="packages-container">
+                        <!-- Free Fire 100 Diamonds (0.95$) -->
+                        <div class="package-card" onclick="handleBuyClick('Free Fire 100 Diamonds', '0.95$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-gem" style="color: #f97316;"></i>
+                                    <span>100 Diamonds</span>
+                                </div>
+                                <div class="pkg-price" style="background: #f97316;">0.95$</div>
+                            </div>
+                        </div>
+                        <!-- Free Fire 310 Diamonds -->
+                        <div class="package-card" onclick="handleBuyClick('Free Fire 310 Diamonds', '2.89$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-gem" style="color: #f97316;"></i>
+                                    <span>310 Diamonds</span>
+                                </div>
+                                <div class="pkg-price" style="background: #f97316;">2.89$</div>
+                            </div>
+                        </div>
+                        <!-- Free Fire Weekly Pass -->
+                        <div class="package-card" onclick="handleBuyClick('Free Fire Weekly Pass', '1.99$')">
+                            <div class="rgb-glow"></div>
+                            <div class="package-content">
+                                <div class="pkg-info">
+                                    <i class="fa-solid fa-ticket" style="color: #f97316;"></i>
+                                    <span>Weekly Pass</span>
+                                </div>
+                                <div class="pkg-price" style="background: #f97316;">1.99$</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Popup បង្ហាញ KHQR ពេលចុចទិញ -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeQrModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-title" id="qrModalTitle">ស្កេនទូទាត់ប្រាក់</div>
+            
+            <!-- KHQR Card UI -->
+            <div class="khqr-card-ui">
+                <div class="khqr-header">
+                    <span>KHQR</span>
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <div class="khqr-body">
+                    <div class="khqr-name">LY SAEVLONG</div>
+                    <div class="khqr-amount" id="qrPriceDisplay">0$</div>
+                    <div class="khqr-divider"></div>
+                    <div class="khqr-qr-container">
+                        <!-- យោងលើលីង KHQR រូបភាពរបស់អ្នក -->
+                        <img src="https://img.sanishtech.com/u/5a323b9a00d83b33752d2a860209aa5f.png" alt="KHQR Code" class="khqr-qr-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading-text" id="loadingText">កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...</div>
         </div>
     </div>
 
@@ -582,13 +760,11 @@
             </button>
             <div class="modal-title">ជ្រើសរើសសេវាកម្ម</div>
             
-            <!-- ប៊ូតុងបើកផ្ទាំងគណនី -->
             <button class="modal-btn btn-account" id="openAccountModalBtn">
                 <i class="fa-solid fa-user-circle"></i>
                 <span id="accountBtnText">បង្កើត / ចូលគណនី</span>
             </button>
 
-            <!-- ប៊ូតុងទាក់ទង Admin Telegram -->
             <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="modal-btn btn-telegram">
                 <i class="fa-brands fa-telegram"></i>
                 <span>ទំនាក់ទំនង Admin</span>
@@ -603,7 +779,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             
-            <!-- 폼ចុះឈ្មោះ (Register Form) -->
+            <!-- Register Form -->
             <div id="registerFormContainer" class="form-container">
                 <div class="modal-title">បង្កើតគណនីថ្មី</div>
                 <input type="text" id="regUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
@@ -613,7 +789,7 @@
                 <div class="switch-form-text" id="switchToLogin">មានគណនីរួចហើយ? ចូលគណនី</div>
             </div>
 
-            <!-- 폼ចូលគណនី (Login Form) -->
+            <!-- Login Form -->
             <div id="loginFormContainer" class="form-container" style="display: none;">
                 <div class="modal-title">ចូលគណនី</div>
                 <input type="text" id="loginUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
@@ -626,7 +802,7 @@
     </div>
 
     <script>
-        // Theme Toggle Script (Inline Button)
+        // Theme Toggle Script
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const htmlElement = document.documentElement;
         const themeIcon = document.getElementById('themeIcon');
@@ -653,25 +829,53 @@
             }
         });
 
-        // Toggle Roblox Packages
+        // Toggle Game Packages Dropdowns
         const robloxCard = document.getElementById('robloxCard');
         robloxCard.addEventListener('click', () => {
             robloxCard.classList.toggle('active');
+            ffCard.classList.remove('active');
         });
 
-        // មុខងារពិនិត្យមើលការ Login ពេលចុចទិញកញ្ចប់
-        function checkUserBeforeBuy(event, packageName, packagePrice) {
+        const ffCard = document.getElementById('ffCard');
+        ffCard.addEventListener('click', () => {
+            ffCard.classList.toggle('active');
+            robloxCard.classList.remove('active');
+        });
+
+        // QR Modal & 2 Seconds Delay Logic
+        const qrModal = document.getElementById('qrModal');
+        const closeQrModalBtn = document.getElementById('closeQrModalBtn');
+        const qrPriceDisplay = document.getElementById('qrPriceDisplay');
+        const loadingText = document.getElementById('loadingText');
+
+        function handleBuyClick(packageName, packagePrice) {
             const loggedUser = localStorage.getItem('loggedUser');
             if (!loggedUser) {
-                event.preventDefault(); // ឃាត់មិនឱ្យចូល Telegram ភ្លាមៗ
                 alert('សូមបង្កើត ឬ ចូលគណនីរបស់អ្នកជាមុនសិន មុននឹងធ្វើការបញ្បទិញ!');
-                storeModal.classList.add('active'); // បើកផ្ទាំងមេនុឺដើមឱ្យរើសបង្កើត/ចូលគណនី
-            } else {
-                // ប្រសិនបើ Login រួច បន្ថែមឈ្មោះគណនីទៅក្នុងតំណភ្ជាប់ Telegram ស្វ័យប្រវត្តិ
-                const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] ចង់ទិញកញ្ចប់ ${packageName} 💰 តម្លៃ ${packagePrice}`;
-                event.currentTarget.href = `https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`;
+                storeModal.classList.add('active');
+                return;
             }
+
+            // បង្ហាញតម្លៃជំនួសលេខ 0 ក្នុង KHQR Card
+            qrPriceDisplay.innerText = packagePrice;
+            loadingText.innerText = 'កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...';
+            qrModal.classList.add('active');
+
+            // រង់ចាំ ២វិនាទី (2000ms) សឹមលោតទៅ Telegram Admin
+            setTimeout(() => {
+                const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] បានទូទាត់ប្រាក់សម្រាប់កញ្ចប់ ${packageName} 💰 តម្លៃ ${packagePrice} ហើយរៀបចំផ្ញើវិក្កយបត្រជូន។`;
+                window.open(`https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`, '_blank');
+                qrModal.classList.remove('active');
+            }, 2000);
         }
+
+        closeQrModalBtn.addEventListener('click', () => {
+            qrModal.classList.remove('active');
+        });
+
+        qrModal.addEventListener('click', (e) => {
+            if (e.target === qrModal) qrModal.classList.remove('active');
+        });
 
         // Store Modal Logic
         const storeModalBtn = document.getElementById('storeModalBtn');
