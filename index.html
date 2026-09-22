@@ -98,6 +98,12 @@
             align-items: center;
             font-size: 1.5rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .store-icon:hover {
+            transform: scale(1.05);
         }
 
         .header-card h1 {
@@ -109,7 +115,7 @@
         /* Menu Section */
         .menu-section {
             display: flex;
-            align-items: stretch;
+            align-items: flex-start;
             gap: 15px;
         }
 
@@ -117,7 +123,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            justify-content: center;
+            padding-top: 15px;
         }
 
         .indicator-bar {
@@ -143,6 +149,14 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
+            cursor: pointer;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .roblox-main-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-3px);
+            box-shadow: 0 16px 35px var(--shadow-color);
         }
 
         .roblox-logo-box {
@@ -188,32 +202,47 @@
             font-weight: 600;
             font-size: 0.9rem;
             letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Pricing Packages Container */
+        .sub-badge i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Pricing Packages Container (លាក់ទុកដំបូង) */
         .packages-container {
-            padding: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 15px;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            background-color: var(--card-bg);
+        }
+
+        /* ពេលបើកកាត (Active) */
+        .roblox-main-card.active .packages-container {
+            max-height: 300px;
+            padding: 15px;
+        }
+
+        .roblox-main-card.active .sub-badge i {
+            transform: rotate(180deg);
         }
 
         /* Package Option Card with RGB Lighting */
         .package-card {
             position: relative;
             border-radius: 14px;
-            padding: 3px; /* ទំហំសម្រាប់ភ្លើង RGB */
+            padding: 3px;
             overflow: hidden;
             cursor: pointer;
             text-decoration: none;
-            transform: perspective(1000px) rotateX(2deg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .package-card:hover {
-            transform: perspective(1000px) rotateX(0deg) translateY(-3px);
-            box-shadow: 0 8px 20px var(--shadow-color);
         }
 
         /* បែបផែនភ្លើង RGB រត់ជុំវិញ Package Button */
@@ -234,7 +263,7 @@
             position: relative;
             background-color: var(--card-bg);
             border-radius: 11px;
-            padding: 12px 18px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -246,22 +275,106 @@
             align-items: center;
             gap: 10px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-color);
         }
 
         .pkg-info i {
-            color: #eab308; /* Icon មាស */
+            color: #eab308;
         }
 
         .pkg-price {
             background: #8b5cf6;
             color: #ffffff;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             box-shadow: 0 3px 8px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Modal Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            width: 90%;
+            max-width: 350px;
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 15px 35px var(--shadow-color);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-account {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .btn-telegram {
+            background-color: #229ed9;
+            color: #ffffff;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            cursor: pointer;
         }
     </style>
 </head>
@@ -275,13 +388,14 @@
     <div class="container">
         <!-- Header: SABAY TOUP -->
         <div class="header-card">
-            <div class="store-icon">
+            <!-- រូបផ្ទះ / Icon ហាង ចុចដើម្បីបើក Menu -->
+            <div class="store-icon" id="storeModalBtn">
                 <i class="fa-solid fa-store"></i>
             </div>
             <h1>SABAY TOUP</h1>
         </div>
 
-        <!-- Section: Roblox TopUp with Prices -->
+        <!-- Section: Roblox TopUp (ចុចដើម្បីបង្ហាញកញ្ចប់តម្លៃ) -->
         <div class="menu-section">
             <div class="sidebar-indicators">
                 <span class="indicator-bar active"></span>
@@ -289,20 +403,23 @@
                 <span class="indicator-bar"></span>
             </div>
 
-            <div class="roblox-main-card">
+            <div class="roblox-main-card" id="robloxCard">
                 <div class="roblox-logo-box">
                     <div class="roblox-cube">
                         <div class="inner-cube"></div>
                     </div>
                     <span class="brand-name">Roblox</span>
                 </div>
-                <div class="sub-badge">TopUp Packages</div>
+                <div class="sub-badge">
+                    <span>TopUp Packages</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
 
-                <!-- តារាងតម្លៃ និងប៊ូតុងជ្រើសរើស -->
+                <!-- តារាងតម្លៃដែលលាក់ទុក -->
                 <div class="packages-container">
                     
                     <!-- Option 1: 40 Robux -->
-                    <a href="#" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -314,7 +431,7 @@
                     </a>
 
                     <!-- Option 2: 100 Robux -->
-                    <a href="#" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -330,19 +447,40 @@
         </div>
     </div>
 
+    <!-- Modal Popup សម្រាប់បង្កើតអាខោន និងទាក់ទង Telegram -->
+    <div class="modal-overlay" id="storeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-title">ជ្រើសរើសសេវាកម្ម</div>
+            
+            <!-- ប៊ូតុងបង្កើតអាខោន -->
+            <a href="#" class="modal-btn btn-account">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>បង្កើតអាខោន</span>
+            </a>
+
+            <!-- ប៊ូតុងទាក់ទង Admin Telegram -->
+            <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="modal-btn btn-telegram">
+                <i class="fa-brands fa-telegram"></i>
+                <span>ទំនាក់ទំនង Admin</span>
+            </a>
+        </div>
+    </div>
+
     <script>
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const htmlElement = document.documentElement;
         const icon = themeToggleBtn.querySelector('i');
 
-        // ចងចាំ Theme ដែលបានជ្រើសរើសពីមុន
+        // ចងចាំ Theme
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             htmlElement.setAttribute('data-theme', 'dark');
             icon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        //ព្រឹត្តិការណ៍ចុចប្ដូររវាង Dark Mode / Light Mode
         themeToggleBtn.addEventListener('click', () => {
             if (htmlElement.getAttribute('data-theme') === 'dark') {
                 htmlElement.setAttribute('data-theme', 'light');
@@ -352,6 +490,33 @@
                 htmlElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Script សម្រាប់បង្ហាញ/លាក់ កញ្ចប់តម្លៃ Roblox ពេលចុចលើកាត
+        const robloxCard = document.getElementById('robloxCard');
+        robloxCard.addEventListener('click', () => {
+            robloxCard.classList.toggle('active');
+        });
+
+        // Script សម្រាប់គ្រប់គ្រង Modal Popup (ចុចរូបផ្ទះ)
+        const storeModalBtn = document.getElementById('storeModalBtn');
+        const storeModal = document.getElementById('storeModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        storeModalBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // មិនឱ្យប៉ះពាល់ដល់ព្រឹត្តិការណ៍ចុចលើ card
+            storeModal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            storeModal.classList.remove('active');
+        });
+
+        // បិទ Modal ពេលចុចក្រៅផ្ទាំង
+        storeModal.addEventListener('click', (e) => {
+            if (e.target === storeModal) {
+                storeModal.classList.remove('active');
             }
         });
     </script>
