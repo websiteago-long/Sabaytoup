@@ -518,11 +518,11 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
 
-                <!-- តារាងតម្លៃដែលលាក់ទុក -->
+                <!-- តារាងតម្លៃដែលលាក់ទុក (ចុចទៅ Telegram Admin ស្វ័យប្រវត្តិ) -->
                 <div class="packages-container">
                     
                     <!-- Option 1: 40 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%2040%20Robux%20💰%20តម្លៃ%200.59$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '40 Robux', '0.59$')">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -534,7 +534,7 @@
                     </a>
 
                     <!-- Option 2: 80 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%2080%20Robux%20💰%20តម្លៃ%201.10$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '80 Robux', '1.10$')">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -546,7 +546,7 @@
                     </a>
 
                     <!-- Option 3: 160 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%20160%20Robux%20💰%20តម្លៃ%202.20$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '160 Robux', '2.20$')">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -558,7 +558,7 @@
                     </a>
 
                     <!-- Option 4: 240 Robux -->
-                    <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="package-card">
+                    <a href="https://t.me/Longzzsmmdigitall?text=សួស្តី%20Admin,%20ខ្ញុំចង់ទិញកញ្ចប់%20240%20Robux%20💰%20តម្លៃ%203.30$" target="_blank" class="package-card" onclick="checkUserBeforeBuy(event, '240 Robux', '3.30$')">
                         <div class="rgb-glow"></div>
                         <div class="package-content">
                             <div class="pkg-info">
@@ -658,6 +658,20 @@
         robloxCard.addEventListener('click', () => {
             robloxCard.classList.toggle('active');
         });
+
+        // មុខងារពិនិត្យមើលការ Login ពេលចុចទិញកញ្ចប់
+        function checkUserBeforeBuy(event, packageName, packagePrice) {
+            const loggedUser = localStorage.getItem('loggedUser');
+            if (!loggedUser) {
+                event.preventDefault(); // ឃាត់មិនឱ្យចូល Telegram ភ្លាមៗ
+                alert('សូមបង្កើត ឬ ចូលគណនីរបស់អ្នកជាមុនសិន មុននឹងធ្វើការបញ្បទិញ!');
+                storeModal.classList.add('active'); // បើកផ្ទាំងមេនុឺដើមឱ្យរើសបង្កើត/ចូលគណនី
+            } else {
+                // ប្រសិនបើ Login រួច បន្ថែមឈ្មោះគណនីទៅក្នុងតំណភ្ជាប់ Telegram ស្វ័យប្រវត្តិ
+                const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] ចង់ទិញកញ្ចប់ ${packageName} 💰 តម្លៃ ${packagePrice}`;
+                event.currentTarget.href = `https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`;
+            }
+        }
 
         // Store Modal Logic
         const storeModalBtn = document.getElementById('storeModalBtn');
