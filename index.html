@@ -38,7 +38,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            padding: 20px;
         }
 
         /* ប៊ូតុងប្ដូរ Theme ពណ៌ស/ខ្មៅ */
@@ -68,10 +68,9 @@
         .container {
             width: 100%;
             max-width: 420px;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         /* Header Card (ទម្រង់ 3D) */
@@ -110,7 +109,7 @@
         /* Menu Section */
         .menu-section {
             display: flex;
-            align-items: center;
+            align-items: stretch;
             gap: 15px;
         }
 
@@ -118,6 +117,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            justify-content: center;
         }
 
         .indicator-bar {
@@ -133,45 +133,14 @@
             height: 25px;
         }
 
-        /* Roblox Card Button (3D & RGB Lighting) */
-        .roblox-card-btn {
-            position: relative;
-            text-decoration: none;
+        /* Roblox Main Card */
+        .roblox-main-card {
             flex-grow: 1;
-            border-radius: 18px;
-            padding: 4px; /* ទំហំសម្រាប់ភ្លើង RGB រត់ជុំវិញ */
-            overflow: hidden;
-            transform: perspective(1000px) rotateX(5deg) translateY(0);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 12px 30px var(--shadow-color);
-        }
-
-        .roblox-card-btn:hover {
-            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
-            box-shadow: 0 18px 40px var(--shadow-color);
-        }
-
-        /* បែបផែនភ្លើង RGB ជុំវិញប៊ូតុង */
-        .rgb-glow {
-            position: absolute;
-            inset: -50%;
-            background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
-            animation: rgbRotate 4s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes rgbRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* ផ្នែកខាងក្នុងប៊ូតុង */
-        .card-content {
-            position: relative;
             background-color: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
-            z-index: 2;
+            box-shadow: 0 12px 30px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
         }
@@ -179,7 +148,7 @@
         .roblox-logo-box {
             display: flex;
             align-items: center;
-            padding: 12px 20px;
+            padding: 15px 20px;
             gap: 15px;
             background: var(--card-bg);
         }
@@ -206,28 +175,99 @@
         }
 
         .brand-name {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-color);
-            letter-spacing: 0.5px;
         }
 
         .sub-badge {
             background-color: #000000;
             color: #ffffff;
             text-align: center;
-            padding: 8px;
+            padding: 6px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+        }
+
+        /* Pricing Packages Container */
+        .packages-container {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Package Option Card with RGB Lighting */
+        .package-card {
+            position: relative;
+            border-radius: 14px;
+            padding: 3px; /* ទំហំសម្រាប់ភ្លើង RGB */
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .package-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        /* បែបផែនភ្លើង RGB រត់ជុំវិញ Package Button */
+        .rgb-glow {
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
+            animation: rgbRotate 4s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rgbRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .package-content {
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 11px;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .pkg-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .pkg-info i {
+            color: #eab308; /* Icon មាស */
+        }
+
+        .pkg-price {
+            background: #8b5cf6;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 3px 8px rgba(139, 92, 246, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <!-- ប៊ូតុងសម្រាប់ប្ដូររវាង Dark Mode និង Light Mode -->
+    <!-- ប៊ូតុងប្ដូរ Theme (Dark/Light Mode) -->
     <button class="theme-toggle-btn" id="themeToggleBtn">
         <i class="fa-solid fa-moon"></i>
     </button>
@@ -241,7 +281,7 @@
             <h1>SABAY TOUP</h1>
         </div>
 
-        <!-- Section: Roblox TopUp -->
+        <!-- Section: Roblox TopUp with Prices -->
         <div class="menu-section">
             <div class="sidebar-indicators">
                 <span class="indicator-bar active"></span>
@@ -249,20 +289,44 @@
                 <span class="indicator-bar"></span>
             </div>
 
-            <!-- 3D Button with RGB Lighting -->
-            <a href="#" class="roblox-card-btn">
-                <div class="rgb-glow"></div>
-                <div class="card-content">
-                    <div class="roblox-logo-box">
-                        <!-- Logo Roblox -->
-                        <div class="roblox-cube">
-                            <div class="inner-cube"></div>
-                        </div>
-                        <span class="brand-name">Roblox</span>
+            <div class="roblox-main-card">
+                <div class="roblox-logo-box">
+                    <div class="roblox-cube">
+                        <div class="inner-cube"></div>
                     </div>
-                    <div class="sub-badge">TopUp</div>
+                    <span class="brand-name">Roblox</span>
                 </div>
-            </a>
+                <div class="sub-badge">TopUp Packages</div>
+
+                <!-- តារាងតម្លៃ និងប៊ូតុងជ្រើសរើស -->
+                <div class="packages-container">
+                    
+                    <!-- Option 1: 40 Robux -->
+                    <a href="#" class="package-card">
+                        <div class="rgb-glow"></div>
+                        <div class="package-content">
+                            <div class="pkg-info">
+                                <i class="fa-solid fa-coins"></i>
+                                <span>40 Robux</span>
+                            </div>
+                            <div class="pkg-price">0.59$</div>
+                        </div>
+                    </a>
+
+                    <!-- Option 2: 100 Robux -->
+                    <a href="#" class="package-card">
+                        <div class="rgb-glow"></div>
+                        <div class="package-content">
+                            <div class="pkg-info">
+                                <i class="fa-solid fa-coins"></i>
+                                <span>100 Robux</span>
+                            </div>
+                            <div class="pkg-price">1.10$</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -271,14 +335,14 @@
         const htmlElement = document.documentElement;
         const icon = themeToggleBtn.querySelector('i');
 
-        // စစ်និតមើលការកំណត់ Theme ពីមុនរបស់អ្នកប្រើប្រាស់
+        // ចងចាំ Theme ដែលបានជ្រើសរើសពីមុន
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             htmlElement.setAttribute('data-theme', 'dark');
             icon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        //ព្រឹត្តិការណ៍ចុចប្ដូរ Theme
+        //ព្រឹត្តិការណ៍ចុចប្ដូររវាង Dark Mode / Light Mode
         themeToggleBtn.addEventListener('click', () => {
             if (htmlElement.getAttribute('data-theme') === 'dark') {
                 htmlElement.setAttribute('data-theme', 'light');
