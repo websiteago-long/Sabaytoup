@@ -41,30 +41,6 @@
             padding: 20px;
         }
 
-        /* ប៊ូតុងប្ដូរ Theme ពណ៌ស/ខ្មៅ */
-        .theme-toggle-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--card-bg);
-            border: 2px solid var(--text-color);
-            color: var(--text-color);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px var(--shadow-color);
-            z-index: 100;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
         .container {
             width: 100%;
             max-width: 420px;
@@ -76,40 +52,42 @@
         /* Header Card (ទម្រង់ 3D) */
         .header-card {
             background-color: var(--card-bg);
-            padding: 15px 25px;
+            padding: 15px 20px;
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
             box-shadow: 0 10px 25px var(--shadow-color),
                         inset 0 2px 3px rgba(255,255,255,0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transform: perspective(1000px) rotateX(2deg);
         }
 
-        /* រូបផ្ទះ / Icon ហាង មានចលនាលោតចុះឡើង (Bounce) */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* រូបផ្ទះ / Icon ហាង មានចលនាលោត */
         .store-icon {
             background: #d1d5db;
             color: #111;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             cursor: pointer;
             animation: bounceIcon 1.5s infinite ease-in-out;
         }
 
         @keyframes bounceIcon {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .store-icon:hover {
@@ -117,10 +95,77 @@
             transform: scale(1.1);
         }
 
+        .header-title-box {
+            display: flex;
+            flex-direction: column;
+        }
+
         .header-card h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        /* ប៊ូតុងប្ដូរ Theme ដាក់ទទឹមខាងក្រោម Sabay Toup */
+        .theme-toggle-btn-inline {
+            background: var(--bg-color);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            color: var(--text-color);
+            padding: 3px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: max-content;
+            margin-top: 4px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .theme-toggle-btn-inline:hover {
+            background: #8b5cf6;
+            color: #ffffff;
+        }
+
+        /* User Profile Info on Header */
+        .user-profile-display {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .username-tag {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Blue Tick Verified Badge */
+        .blue-tick {
+            color: #3b82f6;
+            font-size: 0.8rem;
+        }
+
+        .logout-btn-sm {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.4);
+        }
+
+        .logout-btn-sm:hover {
+            opacity: 0.9;
         }
 
         /* Menu Section */
@@ -235,7 +280,6 @@
             background-color: var(--card-bg);
         }
 
-        /* ពេលបើកកាត (Active) */
         .roblox-main-card.active .packages-container {
             max-height: 300px;
             padding: 15px;
@@ -256,7 +300,6 @@
             box-shadow: 0 5px 15px var(--shadow-color);
         }
 
-        /* បែបផែនភ្លើង RGB រត់ជុំវិញ Package Button */
         .rgb-glow {
             position: absolute;
             inset: -50%;
@@ -304,7 +347,7 @@
             box-shadow: 0 3px 8px rgba(139, 92, 246, 0.4);
         }
 
-        /* Modal Popup Styles */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -359,6 +402,8 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
+            cursor: pointer;
+            border: none;
             box-shadow: 0 4px 10px var(--shadow-color);
             transition: transform 0.2s ease;
         }
@@ -387,23 +432,69 @@
             color: var(--text-color);
             cursor: pointer;
         }
+
+        /* Sub-Modal for Register/Login Forms */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.8rem;
+            text-align: center;
+            min-height: 18px;
+        }
+
+        .switch-form-text {
+            text-align: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: #3b82f6;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ប៊ូតុងប្ដូរ Theme (Dark/Light Mode) -->
-    <button class="theme-toggle-btn" id="themeToggleBtn">
-        <i class="fa-solid fa-moon"></i>
-    </button>
-
     <div class="container">
         <!-- Header: SABAY TOUP -->
         <div class="header-card">
-            <!-- រូបផ្ទះ / Icon ហាង មានចលនាលោត -->
-            <div class="store-icon" id="storeModalBtn">
-                <i class="fa-solid fa-store"></i>
+            <div class="header-left">
+                <!-- រូបផ្ទះ / Icon ហាង មានចលនាលោត -->
+                <div class="store-icon" id="storeModalBtn">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div class="header-title-box">
+                    <h1>SABAY TOUP</h1>
+                    <!-- ប៊ូតុងប្ដូរ Theme ដាក់នៅខាងក្រោមទទឹម Sabay Toup -->
+                    <button class="theme-toggle-btn-inline" id="themeToggleBtn">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                        <span id="themeText">Dark Mode</span>
+                    </button>
+                </div>
             </div>
-            <h1>SABAY TOUP</h1>
+
+            <!-- បង្ហាញឈ្មោះគណនីពេល Login រួច -->
+            <div class="user-profile-display" id="userProfileDisplay" style="display: none;">
+                <div class="username-tag" id="displayUsername">
+                    <span>User</span>
+                    <i class="fa-solid fa-circle-check blue-tick" title="Verified"></i>
+                </div>
+                <button class="logout-btn-sm" id="logoutBtn">ចាកចេញ</button>
+            </div>
         </div>
 
         <!-- Section: Roblox TopUp (ចុចដើម្បីបង្ហាញកញ្ចប់តម្លៃ) -->
@@ -458,7 +549,7 @@
         </div>
     </div>
 
-    <!-- Modal Popup សម្រាប់បង្កើតអាខោន និងទាក់ទង Telegram -->
+    <!-- Modal Popup មេនុឺដើម (ចុចរូបផ្ទះ) -->
     <div class="modal-overlay" id="storeModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">
@@ -466,11 +557,11 @@
             </button>
             <div class="modal-title">ជ្រើសរើសសេវាកម្ម</div>
             
-            <!-- ប៊ូតុងបង្កើតអាខោន -->
-            <a href="#" class="modal-btn btn-account">
-                <i class="fa-solid fa-user-plus"></i>
-                <span>បង្កើតអាខោន</span>
-            </a>
+            <!-- ប៊ូតុងបើកផ្ទាំងគណនី -->
+            <button class="modal-btn btn-account" id="openAccountModalBtn">
+                <i class="fa-solid fa-user-circle"></i>
+                <span id="accountBtnText">បង្កើត / ចូលគណនី</span>
+            </button>
 
             <!-- ប៊ូតុងទាក់ទង Admin Telegram -->
             <a href="https://t.me/Longzzsmmdigitall" target="_blank" class="modal-btn btn-telegram">
@@ -480,43 +571,76 @@
         </div>
     </div>
 
+    <!-- Modal Popup សម្រាប់ បង្កើត/ចូល គណនី -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeAccountModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- 폼ចុះឈ្មោះ (Register Form) -->
+            <div id="registerFormContainer" class="form-container">
+                <div class="modal-title">បង្កើតគណនីថ្មី</div>
+                <input type="text" id="regUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
+                <input type="password" id="regPassword" class="form-input" placeholder="លេខកូដ (Password)">
+                <div class="form-error" id="regError"></div>
+                <button class="modal-btn btn-account" id="submitRegisterBtn">ចុះឈ្មោះ</button>
+                <div class="switch-form-text" id="switchToLogin">មានគណនីរួចហើយ? ចូលគណនី</div>
+            </div>
+
+            <!-- 폼ចូលគណនី (Login Form) -->
+            <div id="loginFormContainer" class="form-container" style="display: none;">
+                <div class="modal-title">ចូលគណនី</div>
+                <input type="text" id="loginUsername" class="form-input" placeholder="ឈ្មោះ (Username)">
+                <input type="password" id="loginPassword" class="form-input" placeholder="លេខកូដ (Password)">
+                <div class="form-error" id="loginError"></div>
+                <button class="modal-btn btn-account" id="submitLoginBtn">ចូលគណនី</button>
+                <div class="switch-form-text" id="switchToRegister">មិនទាន់មានគណនី? បង្កើតថ្មី</div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Theme Toggle Script (Inline Button)
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const htmlElement = document.documentElement;
-        const icon = themeToggleBtn.querySelector('i');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
 
-        // ចងចាំ Theme
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             htmlElement.setAttribute('data-theme', 'dark');
-            icon.classList.replace('fa-moon', 'fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            themeText.innerText = 'Light Mode';
         }
 
         themeToggleBtn.addEventListener('click', () => {
             if (htmlElement.getAttribute('data-theme') === 'dark') {
                 htmlElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
-                icon.classList.replace('fa-sun', 'fa-moon');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeText.innerText = 'Dark Mode';
             } else {
                 htmlElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                icon.classList.replace('fa-moon', 'fa-sun');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeText.innerText = 'Light Mode';
             }
         });
 
-        // Script សម្រាប់បង្ហាញ/លាក់ កញ្ចប់តម្លៃ Roblox ពេលចុចលើកាត
+        // Toggle Roblox Packages
         const robloxCard = document.getElementById('robloxCard');
         robloxCard.addEventListener('click', () => {
             robloxCard.classList.toggle('active');
         });
 
-        // Script សម្រាប់គ្រប់គ្រង Modal Popup (ចុចរូបផ្ទះ)
+        // Store Modal Logic
         const storeModalBtn = document.getElementById('storeModalBtn');
         const storeModal = document.getElementById('storeModal');
         const closeModalBtn = document.getElementById('closeModalBtn');
 
         storeModalBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // មិនឱ្យប៉ះពាល់ដល់ព្រឹត្តិការណ៍ចុចលើ card
+            e.stopPropagation();
             storeModal.classList.add('active');
         });
 
@@ -524,11 +648,128 @@
             storeModal.classList.remove('active');
         });
 
-        // បិទ Modal ពេលចុចក្រៅផ្ទាំង
         storeModal.addEventListener('click', (e) => {
-            if (e.target === storeModal) {
-                storeModal.classList.remove('active');
+            if (e.target === storeModal) storeModal.classList.remove('active');
+        });
+
+        // Account System Logic
+        const accountModal = document.getElementById('accountModal');
+        const openAccountModalBtn = document.getElementById('openAccountModalBtn');
+        const closeAccountModalBtn = document.getElementById('closeAccountModalBtn');
+        
+        const registerFormContainer = document.getElementById('registerFormContainer');
+        const loginFormContainer = document.getElementById('loginFormContainer');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const switchToRegister = document.getElementById('switchToRegister');
+
+        const userProfileDisplay = document.getElementById('userProfileDisplay');
+        const displayUsername = document.getElementById('displayUsername');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const accountBtnText = document.getElementById('accountBtnText');
+
+        openAccountModalBtn.addEventListener('click', () => {
+            storeModal.classList.remove('active');
+            accountModal.classList.add('active');
+        });
+
+        closeAccountModalBtn.addEventListener('click', () => {
+            accountModal.classList.remove('active');
+        });
+
+        accountModal.addEventListener('click', (e) => {
+            if (e.target === accountModal) accountModal.classList.remove('active');
+        });
+
+        switchToLogin.addEventListener('click', () => {
+            registerFormContainer.style.display = 'none';
+            loginFormContainer.style.display = 'flex';
+        });
+
+        switchToRegister.addEventListener('click', () => {
+            loginFormContainer.style.display = 'none';
+            registerFormContainer.style.display = 'flex';
+        });
+
+        function checkLoginState() {
+            const loggedUser = localStorage.getItem('loggedUser');
+            if (loggedUser) {
+                userProfileDisplay.style.display = 'flex';
+                displayUsername.innerHTML = `<span>${loggedUser}</span> <i class="fa-solid fa-circle-check blue-tick" title="Verified"></i>`;
+                accountBtnText.innerText = 'គណនីរបស់ខ្ញុំ';
+            } else {
+                userProfileDisplay.style.display = 'none';
+                accountBtnText.innerText = 'បង្កើត / ចូលគណនី';
             }
+        }
+        checkLoginState();
+
+        const submitRegisterBtn = document.getElementById('submitRegisterBtn');
+        const regUsername = document.getElementById('regUsername');
+        const regPassword = document.getElementById('regPassword');
+        const regError = document.getElementById('regError');
+
+        submitRegisterBtn.addEventListener('click', () => {
+            const u = regUsername.value.trim();
+            const p = regPassword.value.trim();
+
+            if (!u || !p) {
+                regError.innerText = 'សូមបំពេញឈ្មោះ និងលេខកូដ!';
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('savedUsers')) || {};
+
+            if (users[u]) {
+                regError.innerText = 'ឈ្មោះនេះមានគេប្រើរួចហើយ!';
+                return;
+            }
+
+            users[u] = p;
+            localStorage.setItem('savedUsers', JSON.stringify(users));
+            localStorage.setItem('loggedUser', u);
+
+            regError.innerText = '';
+            regUsername.value = '';
+            regPassword.value = '';
+            accountModal.classList.remove('active');
+            checkLoginState();
+            alert('បង្កើតគណនីជោគជ័យ!');
+        });
+
+        const submitLoginBtn = document.getElementById('submitLoginBtn');
+        const loginUsername = document.getElementById('loginUsername');
+        const loginPassword = document.getElementById('loginPassword');
+        const loginError = document.getElementById('loginError');
+
+        submitLoginBtn.addEventListener('click', () => {
+            const u = loginUsername.value.trim();
+            const p = loginPassword.value.trim();
+
+            if (!u || !p) {
+                loginError.innerText = 'សូមបំពេញឈ្មោះ និងលេខកូដ!';
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('savedUsers')) || {};
+
+            if (!users[u] || users[u] !== p) {
+                loginError.innerText = 'ឈ្មោះ ឬ លេខកូដ មិនត្រឹមត្រូវទេ!';
+                return;
+            }
+
+            localStorage.setItem('loggedUser', u);
+            loginError.innerText = '';
+            loginUsername.value = '';
+            loginPassword.value = '';
+            accountModal.classList.remove('active');
+            checkLoginState();
+            alert('ចូលគណនីបានជោគជ័យ!');
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('loggedUser');
+            checkLoginState();
+            alert('បានចាកចេញពីគណនី!');
         });
     </script>
 </body>
