@@ -43,7 +43,7 @@
 
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 440px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -166,6 +166,59 @@
         }
 
         .logout-btn-sm:hover {
+            opacity: 0.9;
+        }
+
+        /* Telegram Username Input Card (ដាក់ពីលើតារាងកញ្ចប់តម្លៃ) */
+        .telegram-input-card {
+            background-color: var(--card-bg);
+            padding: 12px 15px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .telegram-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #229ed9;
+        }
+
+        .telegram-input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+
+        .telegram-input {
+            flex-grow: 1;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .telegram-save-btn {
+            background: #229ed9;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(34, 158, 217, 0.4);
+        }
+
+        .telegram-save-btn:hover {
             opacity: 0.9;
         }
 
@@ -299,7 +352,7 @@
         }
 
         .game-main-card.active .packages-container {
-            max-height: 500px;
+            max-height: 700px;
             padding: 15px;
         }
 
@@ -307,7 +360,71 @@
             transform: rotate(180deg);
         }
 
-        .package-card {
+        /* Grid Layout សម្រាប់ Robux Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .package-card-grid {
+            position: relative;
+            border-radius: 12px;
+            padding: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            background: var(--card-bg);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .package-card-grid:hover {
+            transform: translateY(-2px);
+            border-color: #8b5cf6;
+        }
+
+        .pkg-grid-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .pkg-icon-value {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .pkg-icon-value i {
+            color: #eab308;
+            font-size: 1.2rem;
+        }
+
+        .pkg-grid-price {
+            background: #8b5cf6;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Free Fire Package List Style */
+        .package-card-list {
             position: relative;
             border-radius: 14px;
             padding: 3px;
@@ -315,19 +432,6 @@
             cursor: pointer;
             text-decoration: none;
             box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .rgb-glow {
-            position: absolute;
-            inset: -50%;
-            background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
-            animation: rgbRotate 4s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes rgbRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .package-content {
@@ -341,27 +445,17 @@
             z-index: 2;
         }
 
-        .pkg-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-color);
+        .rgb-glow {
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
+            animation: rgbRotate 4s linear infinite;
+            z-index: 1;
         }
 
-        .pkg-info i {
-            color: #eab308;
-        }
-
-        .pkg-price {
-            background: #8b5cf6;
-            color: #ffffff;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 3px 8px rgba(139, 92, 246, 0.4);
+        @keyframes rgbRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Modal Styles */
@@ -643,6 +737,18 @@
             </div>
         </div>
 
+        <!-- Telegram Username Input Card (ដាក់នៅពីលើតារាងកញ្ចប់តម្លៃ) -->
+        <div class="telegram-input-card">
+            <div class="telegram-label">
+                <i class="fa-brands fa-telegram"></i>
+                <span>Telegram Username របស់អ្នក (ឧ. @username)</span>
+            </div>
+            <div class="telegram-input-wrapper">
+                <input type="text" id="tgUsernameInput" class="telegram-input" placeholder="បញ្ចូល Telegram Username...">
+                <button class="telegram-save-btn" id="saveTgBtn">រក្សាទុក</button>
+            </div>
+        </div>
+
         <!-- Menu Section (Roblox & Free Fire) -->
         <div class="menu-section">
             
@@ -666,48 +772,83 @@
                     </div>
 
                     <div class="packages-container">
-                        <!-- 40 Robux -->
-                        <div class="package-card" onclick="handleBuyClick('Roblox 40 Robux', '0.59$')">
-                            <div class="rgb-glow"></div>
-                            <div class="package-content">
-                                <div class="pkg-info">
-                                    <i class="fa-solid fa-coins"></i>
-                                    <span>40 Robux</span>
+                        <div class="packages-grid">
+                            <!-- 80 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 80 Robux', '$1.00')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>80</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$1.00</div>
                                 </div>
-                                <div class="pkg-price">0.59$</div>
                             </div>
-                        </div>
-                        <!-- 80 Robux -->
-                        <div class="package-card" onclick="handleBuyClick('Roblox 80 Robux', '1.10$')">
-                            <div class="rgb-glow"></div>
-                            <div class="package-content">
-                                <div class="pkg-info">
-                                    <i class="fa-solid fa-coins"></i>
-                                    <span>80 Robux</span>
+                            <!-- 160 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 160 Robux', '$1.99')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>160</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$1.99</div>
                                 </div>
-                                <div class="pkg-price">1.10$</div>
                             </div>
-                        </div>
-                        <!-- 160 Robux -->
-                        <div class="package-card" onclick="handleBuyClick('Roblox 160 Robux', '2.20$')">
-                            <div class="rgb-glow"></div>
-                            <div class="package-content">
-                                <div class="pkg-info">
-                                    <i class="fa-solid fa-coins"></i>
-                                    <span>160 Robux</span>
+                            <!-- 240 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 240 Robux', '$2.99')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>240</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$2.99</div>
                                 </div>
-                                <div class="pkg-price">2.20$</div>
                             </div>
-                        </div>
-                        <!-- 240 Robux -->
-                        <div class="package-card" onclick="handleBuyClick('Roblox 240 Robux', '3.30$')">
-                            <div class="rgb-glow"></div>
-                            <div class="package-content">
-                                <div class="pkg-info">
-                                    <i class="fa-solid fa-coins"></i>
-                                    <span>240 Robux</span>
+                            <!-- 320 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 320 Robux', '$3.99')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>320</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$3.99</div>
                                 </div>
-                                <div class="pkg-price">3.30$</div>
+                            </div>
+                            <!-- 400 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 400 Robux', '$4.95')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>400</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$4.95</div>
+                                </div>
+                            </div>
+                            <!-- 500 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 500 Robux', '$6.19')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>500</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$6.19</div>
+                                </div>
+                            </div>
+                            <!-- 640 Robux -->
+                            <div class="package-card-grid" onclick="handleBuyClick('Roblox 640 Robux', '$7.99')">
+                                <div class="rgb-glow"></div>
+                                <div class="pkg-grid-content">
+                                    <div class="pkg-icon-value">
+                                        <i class="fa-solid fa-hexagon-nodes"></i>
+                                        <span>640</span>
+                                    </div>
+                                    <div class="pkg-grid-price">$7.99</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -734,37 +875,37 @@
                     </div>
 
                     <div class="packages-container">
-                        <!-- Free Fire 100 Diamonds (0.95$) -->
-                        <div class="package-card" onclick="handleBuyClick('Free Fire 100 Diamonds', '0.95$')">
+                        <!-- Free Fire 100 Diamonds -->
+                        <div class="package-card-list" onclick="handleBuyClick('Free Fire 100 Diamonds', '$0.95')">
                             <div class="rgb-glow"></div>
                             <div class="package-content">
                                 <div class="pkg-info">
                                     <i class="fa-solid fa-gem" style="color: #f97316;"></i>
                                     <span>100 Diamonds</span>
                                 </div>
-                                <div class="pkg-price" style="background: #f97316;">0.95$</div>
+                                <div class="pkg-price" style="background: #f97316;">$0.95</div>
                             </div>
                         </div>
                         <!-- Free Fire 310 Diamonds -->
-                        <div class="package-card" onclick="handleBuyClick('Free Fire 310 Diamonds', '2.89$')">
+                        <div class="package-card-list" onclick="handleBuyClick('Free Fire 310 Diamonds', '$2.89')">
                             <div class="rgb-glow"></div>
                             <div class="package-content">
                                 <div class="pkg-info">
                                     <i class="fa-solid fa-gem" style="color: #f97316;"></i>
                                     <span>310 Diamonds</span>
                                 </div>
-                                <div class="pkg-price" style="background: #f97316;">2.89$</div>
+                                <div class="pkg-price" style="background: #f97316;">$2.89</div>
                             </div>
                         </div>
                         <!-- Free Fire Weekly Pass -->
-                        <div class="package-card" onclick="handleBuyClick('Free Fire Weekly Pass', '1.99$')">
+                        <div class="package-card-list" onclick="handleBuyClick('Free Fire Weekly Pass', '$1.99')">
                             <div class="rgb-glow"></div>
                             <div class="package-content">
                                 <div class="pkg-info">
                                     <i class="fa-solid fa-ticket" style="color: #f97316;"></i>
                                     <span>Weekly Pass</span>
                                 </div>
-                                <div class="pkg-price" style="background: #f97316;">1.99$</div>
+                                <div class="pkg-price" style="background: #f97316;">$1.99</div>
                             </div>
                         </div>
                     </div>
@@ -788,7 +929,7 @@
                 <div class="loading-msg">កំពុងបង្កើត KHQR ជូនលោកអ្នកហើយ...</div>
             </div>
 
-            <!-- KHQR Card UI (លេចចេញមកក្រោយ ២វិនាទី) -->
+            <!-- KHQR Card UI -->
             <div class="khqr-card-ui" id="qrCardBox" style="display: none;">
                 <div class="khqr-header">
                     <span>KHQR</span>
@@ -799,7 +940,7 @@
                     <div class="khqr-amount" id="qrPriceDisplay">0$</div>
                     <div class="khqr-divider"></div>
                     <div class="khqr-qr-container">
-                        <!-- រូបភាព KHQR របស់អ្នក -->
+                        <!-- រូបភាព KHQR -->
                         <img src="https://img.sanishtech.com/u/5a323b9a00d83b33752d2a860209aa5f.png" alt="KHQR Code" class="khqr-qr-img">
                     </div>
                 </div>
@@ -890,6 +1031,26 @@
             }
         });
 
+        // Telegram Username Input Logic
+        const tgUsernameInput = document.getElementById('tgUsernameInput');
+        const saveTgBtn = document.getElementById('saveTgBtn');
+
+        // โหลด Telegram Username ដែលធ្លាប់រក្សាទុក
+        const savedTg = localStorage.getItem('userTelegram');
+        if (savedTg) {
+            tgUsernameInput.value = savedTg;
+        }
+
+        saveTgBtn.addEventListener('click', () => {
+            const tgVal = tgUsernameInput.value.trim();
+            if (!tgVal) {
+                alert('សូមបំពេញ Telegram Username របស់អ្នក!');
+                return;
+            }
+            localStorage.setItem('userTelegram', tgVal);
+            alert('រក្សាទុក Telegram Username បានជោគជ័យ!');
+        });
+
         // Toggle Game Packages Dropdowns
         const robloxCard = document.getElementById('robloxCard');
         robloxCard.addEventListener('click', () => {
@@ -923,6 +1084,12 @@
                 return;
             }
 
+            const userTg = localStorage.getItem('userTelegram') || 'មិនបានបំពេញ';
+            if (userTg === 'មិនបានបំពេញ') {
+                alert('សូមបំពេញ និងចុចប៊ូតុង "រក្សាទុក" Telegram Username របស់អ្នកនៅខាងលើជាមុនសិន!');
+                return;
+            }
+
             selectedPackageInfo = { name: packageName, price: packagePrice };
             qrPriceDisplay.innerText = packagePrice;
 
@@ -940,10 +1107,11 @@
             }, 2000);
         }
 
-        // ពេលចុចប៊ូតុង "បញ្ជាក់" -> លោតទៅ Telegram Admin
+        // ពេលចុចប៊ូតុង "បញ្ជាក់" -> លោតទៅ Telegram Admin ជាមួយ Telegram Username របស់អ្នកប្រើប្រាស់
         confirmBuyBtn.addEventListener('click', () => {
             const loggedUser = localStorage.getItem('loggedUser');
-            const customMsg = `សួស្តី Admin, ខ្ញុំគណនីឈ្មោះ [${loggedUser}] បានទូទាត់ប្រាក់សម្រាប់កញ្ចប់ ${selectedPackageInfo.name} 💰 តម្លៃ ${selectedPackageInfo.price} ហើយរៀបចំផ្ញើវិក្កយបត្រជូន។`;
+            const userTg = localStorage.getItem('userTelegram');
+            const customMsg = `សួស្តី Admin,\nខ្ញុំគណនីឈ្មោះ [${loggedUser}] (Telegram: ${userTg}) បានទូទាត់ប្រាក់សម្រាប់កញ្ចប់ ${selectedPackageInfo.name} 💰 តម្លៃ ${selectedPackageInfo.price} ហើយរៀបចំផ្ញើវិក្កយបត្រជូន។`;
             window.open(`https://t.me/Longzzsmmdigitall?text=${encodeURIComponent(customMsg)}`, '_blank');
             qrModal.classList.remove('active');
         });
